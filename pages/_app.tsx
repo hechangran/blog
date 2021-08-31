@@ -5,7 +5,7 @@ import 'styles/global.css'
 import 'react-notion-x/src/styles.css'
 
 // used for code syntax highlighting (optional)
-import 'prismjs/themes/prism-coy.css'
+import 'styles/prism-vs.css'
 
 // this might be better for dark mode
 // import 'prismjs/themes/prism-okaidia.css'
