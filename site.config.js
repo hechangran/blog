@@ -8,7 +8,7 @@ module.exports = {
 
   // basic site info (required)
   name: 'Log @ Notion',
-  domain: 'www.notion.so/crhe/Log-Notion-0e046dfaf0e84f5ab0a77cd4897d345a',
+  domain: 'crhe.vercel.app',
   author: 'OPT1MUM',
 
   // open graph metadata (optional)
