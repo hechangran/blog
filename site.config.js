@@ -12,7 +12,7 @@ module.exports = {
   author: 'OPT1MUM',
 
   // open graph metadata (optional)
-  description: 'Empty',
+  description: 'Log',
 
   // social usernames (optional)
   github: 'hechangran',
