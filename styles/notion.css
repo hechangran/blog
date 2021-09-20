@@ -160,7 +160,7 @@
 }
 
 .index-page > .notion-title {
-  text-align: start;
+  text-align: center;
 }
 
 .notion-collection-column-title {
@@ -327,8 +327,9 @@
 }
 
 .notion-page-icon-wrapper {
-  justify-content: center;
+  justify-content: center;  
 }
+/* make the icon centered */
 
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
