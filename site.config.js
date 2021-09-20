@@ -1,21 +1,22 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: '97f8c527c9334c3b9aa3a297de262782',
+  rootNotionPageId: '0e046dfaf0e84f5ab0a77cd4897d345a',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Elsa\'s Blog',
-  domain: 'www.elsagranger.com',
-  author: 'Elsa Granger',
+  name: 'Log @ Notion',
+  domain: 'https://www.notion.so/crhe/Log-Notion-0e046dfaf0e84f5ab0a77cd4897d345a',
+  author: 'OPT1MUM',
 
   // open graph metadata (optional)
-  description: 'Elsa Granger\'s Blog',
+  description: 'Empty',
 
   // social usernames (optional)
-  github: 'zeyugao',
+  github: 'hechangran',
+  linkedin: 'crhe',
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
