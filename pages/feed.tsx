@@ -6,20 +6,20 @@ import axios from 'axios'
 
 const domain = `https://${config.domain}`
 
-
+ 
 const generateRss = (posts: Post[]) => {
     const year = new Date().getFullYear()
     const feed = new Feed({
         id: domain,
         link: domain,
-        title: "Elsa Ganger's Blog",
-        description: "Blog's RSS",
-        copyright: `All rights reserved ${year}, Elsa Granger`,
+        title: "Log",
+        description: "Log's RSS",
+        copyright: `All rights reserved ${year}, OPT1MUM`,
         image: `${domain}/favicon.png`,
         favicon: `${domain}/favicon.ico`,
         author: {
-            name: 'Elsa Granger',
-            link: 'https://www.elsagranger.com'
+            name: 'OPT1MUM',
+            link: 'https://crhe.vercel.app'
         }
     })
 
