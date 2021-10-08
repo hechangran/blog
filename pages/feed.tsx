@@ -5,7 +5,7 @@ import { Feed } from 'feed'
 import axios from 'axios'
 
 const domain = `https://${config.domain}`
-
+ 
  
 const generateRss = (posts: Post[]) => {
     const year = new Date().getFullYear()
