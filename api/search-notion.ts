@@ -10,9 +10,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const searchParams: types.SearchParams = req.body
 
-  console.log('lambda search-notion', searchParams)
+  console.log('<<< lambda search-notion', searchParams)
   const results = await search(searchParams)
-
+  console.log('>>> lambda search-notion', results)
+  
   res.setHeader(
     'Cache-Control',
     'public, s-maxage=60, max-age=60, stale-while-revalidate=60'
