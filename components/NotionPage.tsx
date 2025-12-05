@@ -9,7 +9,7 @@ import BodyClassName from 'react-body-classname'
 import useDarkMode from 'use-dark-mode'
 import { PageBlock } from 'notion-types'
 
-import { Tweet, TwitterContextProvider } from 'react-static-tweets'
+// Tweets disabled: react-static-tweets removed for Next 16 upgrade
 
 // core notion renderer
 import { NotionRenderer, Code, Collection, CollectionRow } from 'react-notion-x'
@@ -136,15 +136,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
   let comments: React.ReactNode = null
 
   return (
-    <TwitterContextProvider
-      value={{
-        tweetAstMap: (recordMap as any).tweetAstMap || {},
-        swrOptions: {
-          fetcher: (id) =>
-            fetch(`/api/get-tweet-ast/${id}`).then((r) => r.json())
-        }
-      }}
-    >
       <PageHead site={site} />
 
       <Head>
@@ -224,7 +215,8 @@ export const NotionPage: React.FC<types.PageProps> = ({
           code: Code,
           collection: Collection,
           collectionRow: CollectionRow,
-          tweet: Tweet,
+          // tweet renderer removed
+          tweet: undefined,
           modal: Modal,
           pdf: Pdf,
           equation: Equation
@@ -252,6 +244,5 @@ export const NotionPage: React.FC<types.PageProps> = ({
         }
       />
 
-    </TwitterContextProvider>
   )
 }

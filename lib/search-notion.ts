@@ -1,5 +1,5 @@
 // import ky from 'ky'
-import fetch from 'isomorphic-unfetch'
+// use global fetch available in Next.js 16 on server and client
 import pMemoize from 'p-memoize'
 
 import { api } from './config'
