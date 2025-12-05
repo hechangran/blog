@@ -42,6 +42,9 @@ export const author: string = getSiteConfig('author')
 export const domain: string = getSiteConfig('domain')
 export const description: string = getSiteConfig('description', 'Notion Blog')
 
+// Feature toggles
+export const enableSearch: boolean = getSiteConfig('enableSearch', true)
+
 // social accounts
 export const twitter: string | null = getSiteConfig('twitter', null)
 export const github: string | null = getSiteConfig('github', null)

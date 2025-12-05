@@ -36,6 +36,9 @@ module.exports = {
   // variables specified in .env.example
   isPreviewImageSupportEnabled: false,
 
+  // feature toggles
+  enableSearch: false,
+
   // map of notion page IDs to URL paths (optional)
   // any pages defined here will override their default URL paths
   // example:
