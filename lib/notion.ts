@@ -2,7 +2,6 @@ import { NotionAPI } from 'notion-client'
 import { ExtendedRecordMap, SearchParams, SearchResults } from 'notion-types'
 import { getPreviewImages } from './get-preview-images'
 import { mapNotionImageUrl } from './map-image-url'
-import { fetchTweetAst } from 'static-tweets'
 import pMap from 'p-map'
 
 export const notion = new NotionAPI({
@@ -49,54 +48,7 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   const previewImageMap = await getPreviewImages(urls)
   ;(recordMap as any).preview_images = previewImageMap
 
-  const tweetIds: string[] = blockIds
-    .map((blockId) => {
-      const block = recordMap.block[blockId]?.value
-
-      if (block) {
-        if (block.type === 'tweet') {
-          const src = block.properties?.source?.[0]?.[0]
-
-          if (src) {
-            const id = src.split('?')[0].split('/').pop()
-            if (id) return id
-          }
-        }
-      }
-
-      return null
-    })
-    .filter(Boolean)
-
-  const tweetAsts = await pMap(
-    tweetIds,
-    async (tweetId) => {
-      try {
-        return {
-          tweetId,
-          tweetAst: await fetchTweetAst(tweetId)
-        }
-      } catch (err) {
-        console.error('error fetching tweet info', tweetId, err)
-      }
-    },
-    {
-      concurrency: 4
-    }
-  )
-
-  const tweetAstMap = tweetAsts.reduce((acc, { tweetId, tweetAst }) => {
-    if (tweetAst) {
-      return {
-        ...acc,
-        [tweetId]: tweetAst
-      }
-    } else {
-      return acc
-    }
-  }, {})
-
-  ;(recordMap as any).tweetAstMap = tweetAstMap
+  // Tweets disabled as part of Next 16 upgrade; no tweetAstMap generation
 
   return recordMap
 }

@@ -82,7 +82,9 @@ export const NotionPage: React.FC<types.PageProps> = ({
   const isLiteMode = lite === 'true'
   const searchParams = new URLSearchParams(params)
 
-  const darkMode = useDarkMode(false, { classNameDark: 'dark-mode' })
+  const darkMode = config.isServer
+    ? ({ value: false, toggle: () => {} } as any)
+    : useDarkMode(false, { classNameDark: 'dark-mode' })
 
   if (router.isFallback) {
     return <Loading />
@@ -136,6 +138,7 @@ export const NotionPage: React.FC<types.PageProps> = ({
   let comments: React.ReactNode = null
 
   return (
+    <>
       <PageHead site={site} />
 
       <Head>
@@ -243,6 +246,6 @@ export const NotionPage: React.FC<types.PageProps> = ({
           />
         }
       />
-
+    </>
   )
 }

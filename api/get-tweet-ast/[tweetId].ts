@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { fetchTweetAst } from 'static-tweets'
 
 export default async (
   req: NextApiRequest,
@@ -17,9 +16,6 @@ export default async (
       .send({ error: 'missing required parameter "tweetId"' })
   }
 
-  console.log('getTweetAst', tweetId)
-  const tweetAst = await fetchTweetAst(tweetId)
-  console.log('tweetAst', tweetId, tweetAst)
-
-  res.status(200).json(tweetAst)
+  // Tweets disabled in this deployment. Endpoint not implemented.
+  res.status(501).json({ error: 'Tweet AST fetching disabled' })
 }
