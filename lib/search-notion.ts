@@ -10,26 +10,30 @@ export const searchNotion = pMemoize(searchNotionImpl, { maxAge: 10000 })
 async function searchNotionImpl(
   params: types.SearchParams
 ): Promise<types.SearchResults> {
-  return fetch(api.searchNotion, {
+  const q: any = (params as any)?.query
+  if (typeof q !== 'string' || q.trim().length === 0) {
+    return { results: [] } as any
+  }
+  try {
+    const res = await fetch(api.searchNotion, {
     method: 'POST',
     body: JSON.stringify(params),
     headers: {
       'content-type': 'application/json'
     }
-  })
-    .then((res) => {
-      console.log(res)
-
-      if (res.ok) {
-        return res
-      }
-
-      // convert non-2xx HTTP responses into errors
-      const error: any = new Error(res.statusText)
-      error.response = res
-      return Promise.reject(error)
     })
-    .then((res) => res.json())
+
+    if (!res.ok) {
+      const text = await res.text().catch(() => '')
+      console.error('searchNotion error', res.status, text)
+      return { results: [] } as any
+    }
+
+    return (await res.json()) as types.SearchResults
+  } catch (err) {
+    console.error('searchNotion fetch failed', err)
+    return { results: [] } as any
+  }
 
   // return ky
   //   .post(api.searchNotion, {

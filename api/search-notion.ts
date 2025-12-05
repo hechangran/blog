@@ -9,6 +9,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const searchParams: types.SearchParams = req.body
+  const q = (searchParams as any)?.query ?? ''
+  if (typeof q !== 'string' || q.trim().length === 0) {
+    return res.status(400).json({ error: 'query is required' })
+  }
+  if (q.length > 256) {
+    return res.status(400).json({ error: 'query too long' })
+  }
 
   console.log('lambda search-notion', searchParams)
   const results = await search(searchParams)
