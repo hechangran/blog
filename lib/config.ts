@@ -102,7 +102,8 @@ export const isServer = typeof window === 'undefined'
 export const port = getEnv('PORT', '3000')
 export const host = isDev ? `http://localhost:${port}` : `https://${domain}`
 
-export const apiBaseUrl = `${host}/api`
+// Use absolute API base on server (for SSG/SSR) and relative on client
+export const apiBaseUrl = isServer ? `${host}/api` : `/api`
 
 export const api = {
   createPreviewImage: `${apiBaseUrl}/create-preview-image`,
